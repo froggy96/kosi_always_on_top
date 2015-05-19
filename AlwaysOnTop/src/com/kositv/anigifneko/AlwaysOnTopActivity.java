@@ -1,6 +1,5 @@
 package com.kositv.anigifneko;
 
-import pe.sbk.alwaysontop.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

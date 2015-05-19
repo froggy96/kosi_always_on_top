@@ -3,7 +3,6 @@ package com.kositv.anigifneko;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import pe.sbk.alwaysontop.R;
 import pl.droidsonroids.gif.GifImageView;
 import android.app.Service;
 import android.content.BroadcastReceiver;
