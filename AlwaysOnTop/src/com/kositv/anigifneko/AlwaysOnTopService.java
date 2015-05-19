@@ -127,21 +127,21 @@ public class AlwaysOnTopService extends Service implements View.OnTouchListener,
 		mTimerMoveX = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mTimerMoveX, getResources().getDisplayMetrics());
 		mTimerMoveY = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mTimerMoveY, getResources().getDisplayMetrics());
 		
-		//최상위 윈도우에 넣기 위한 설정
+		// set window params for top-most-view
 		mParams = new WindowManager.LayoutParams(
 			WindowManager.LayoutParams.WRAP_CONTENT,
 			WindowManager.LayoutParams.WRAP_CONTENT,				
 			WindowManager.LayoutParams.TYPE_PHONE,
 			WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
-			PixelFormat.TRANSLUCENT); //투명
+			PixelFormat.TRANSLUCENT);
 		
 		mParams.gravity = Gravity.TOP|Gravity.LEFT;
 		mParams.width = defaultWidth;
 		mParams.height = defaultHeight; 
 		
-		mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);	//윈도우 매니저 불러옴.
+		mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
 
-		// 화면 크기 알아내기
+		// get screen size in pixels
 		DisplayMetrics metrics = new DisplayMetrics();
 		mWindowManager.getDefaultDisplay().getMetrics(metrics);
 		mScreenWidth = metrics.widthPixels;
@@ -149,9 +149,9 @@ public class AlwaysOnTopService extends Service implements View.OnTouchListener,
 
 		mParams.x = (int)(Math.random()*mScreenWidth*0.8);
 		mParams.y = (int)(Math.random()*mScreenHeight*0.8);
-		mWindowManager.addView(gifView, mParams); //최상위 윈도우에 뷰 넣기. *중요 : 여기에 permission을 미리 설정해 두어야 한다. 매니페스트에
+		mWindowManager.addView(gifView, mParams);
 		
-		// timer-tick receiver 생성하기
+		// timer-tick receiver
 		IntentFilter filter = new IntentFilter(INTENT_BROADCAST_TIMER_TICK);
 		filter.addAction(Intent.ACTION_SCREEN_ON);
 		filter.addAction(Intent.ACTION_SCREEN_OFF);
